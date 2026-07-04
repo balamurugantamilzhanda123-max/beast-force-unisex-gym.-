@@ -46,7 +46,7 @@ export default function HomePage() {
         <div className="grain-layer" />
         <div className="container hero-grid">
           <div className="hero-copy reveal-up">
-            <span className="eyebrow">Premium Gothic Unisex Gym</span>
+            <span className="eyebrow">Premium Unisex Gym</span>
             <h1>FORGE YOUR BEAST MODE</h1>
             <p>Unisex Gym • Strength Training • Fat Loss • Muscle Gain</p>
             <div className="hero-actions">
