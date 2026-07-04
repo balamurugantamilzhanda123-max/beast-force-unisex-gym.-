@@ -1,99 +1,24 @@
-# BEAST FORCE UNISEX GYM Website
+# Beast Force Gym
 
-Premium responsive gym website with public landing pages, membership subscription flow, EmailJS confirmation hooks, and a Firebase-ready admin dashboard.
+Production-ready Next.js membership website for a unisex gym with Supabase, Razorpay, Resend, Twilio WhatsApp, and Vercel Cron.
 
-## Run Locally
+## Setup
 
-Because the project uses ES modules, serve it through a local server instead of opening files directly.
+1. Install Node.js 20+.
+2. Run `npm install`.
+3. Copy `.env.example` to `.env.local` and fill credentials.
+4. Create a Supabase project and run `supabase/schema.sql` in the SQL editor.
+5. Create a Supabase Storage bucket named `gym-media`.
+6. Run `npm run dev`.
 
-```bash
-python -m http.server 8080
-```
+## Deployment
 
-Open:
+- Deploy to Vercel.
+- Add every environment variable from `.env.example`.
+- Set `CRON_SECRET` to a strong random value.
+- Configure Razorpay webhook or callback URLs to point to the deployed app.
+- Configure Twilio WhatsApp approved templates for production messages.
 
-- Public website: `http://localhost:8080/index.html`
-- Admin login: `http://localhost:8080/admin-login.html`
-- Admin dashboard: `http://localhost:8080/admin-dashboard.html`
+## Admin Access
 
-## Configure Firebase
-
-Edit `js/firebase-config.js` and replace the placeholder values:
-
-```js
-export const firebaseConfig = {
-  apiKey: "...",
-  authDomain: "...",
-  projectId: "...",
-  storageBucket: "...",
-  messagingSenderId: "...",
-  appId: "..."
-};
-```
-
-Update the admin allowlist:
-
-```js
-export const adminAllowlist = [
-  "owner@example.com"
-];
-```
-
-Expected Firestore collections:
-
-- `members`
-- `membershipPlans`
-- `contactMessages`
-- `trainers`
-- `amenities`
-- `gallery`
-- `settings`
-- `promotions`
-
-Until Firebase is configured, the app uses browser localStorage demo data.
-
-## Configure EmailJS
-
-Edit `js/firebase-config.js`:
-
-```js
-export const emailJsConfig = {
-  publicKey: "...",
-  serviceId: "...",
-  subscriptionTemplateId: "...",
-  promotionTemplateId: "..."
-};
-```
-
-Suggested subscription template variables:
-
-- `to_name`
-- `to_email`
-- `selected_plan`
-- `confirmation_id`
-- `gym_name`
-
-Until EmailJS is configured, subscription requests are stored but emails are skipped with a console message.
-
-## Replace Placeholders
-
-The public search pass did not find reliable official details for BEAST FORCE UNISEX GYM. Replace these placeholders before production:
-
-- Phone and WhatsApp number
-- Email address
-- Full address
-- Google Maps embed URL
-- Trainer names/photos
-- Membership pricing
-- Gallery images
-- Social media links
-- Privacy Policy and Terms links
-
-## Files
-
-- `index.html` - public website
-- `success.html` - subscription confirmation page
-- `admin-login.html` - admin sign-in page
-- `admin-dashboard.html` - protected management dashboard
-- `css/` - public and admin styling
-- `js/` - app behavior, Firebase service, subscriptions, admin dashboard, animations, BMI calculator
+Create a Supabase Auth user, then update its `profiles.role` to `admin` in Supabase.
