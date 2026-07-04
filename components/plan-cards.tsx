@@ -11,10 +11,10 @@ export function PlanCards() {
             {plan.highlight ? <Crown size={22} /> : index === 0 ? <Dumbbell size={22} /> : <Flame size={22} />}
           </div>
           <span className="eyebrow">{plan.durationDays} days</span>
-          <h3>{plan.name}</h3>
+          <h3>{plan.name} Plan</h3>
           <div className="price">Rs. {plan.price.toLocaleString("en-IN")}</div>
           <p className="muted">Premium gym access, guided training support, progress tracking, and a focused Beast Force floor.</p>
-          <Link className="button" href="/register">Choose Plan <ArrowRight size={17} /></Link>
+          <Link className="button" href="/register">{plan.highlight ? "Pay Now" : "Join Now"} <ArrowRight size={17} /></Link>
         </article>
       ))}
     </div>

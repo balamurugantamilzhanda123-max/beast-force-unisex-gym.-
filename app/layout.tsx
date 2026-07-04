@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Rajdhani } from "next/font/google";
+import { Pirata_One, Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const rajdhani = Rajdhani({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-body"
 });
-const bebasNeue = Bebas_Neue({
+const pirataOne = Pirata_One({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-display"
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${rajdhani.variable} ${bebasNeue.variable}`}>
+      <body className={`${poppins.variable} ${pirataOne.variable}`}>
         <Header />
         {children}
         <Footer />

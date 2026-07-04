@@ -2,13 +2,11 @@ import Link from "next/link";
 import { Dumbbell } from "lucide-react";
 
 const links = [
-  ["About", "/about"],
-  ["Plans", "/plans"],
-  ["Facilities", "/facilities"],
-  ["Gallery", "/gallery"],
-  ["Payment", "/payment"],
-  ["Contact", "/contact"],
-  ["Dashboard", "/dashboard"]
+  ["Home", "/#home"],
+  ["Plans", "/#plans"],
+  ["Timings", "/#timings"],
+  ["Register", "/#register"],
+  ["Admin", "/admin"]
 ];
 
 export function Header() {
@@ -16,7 +14,7 @@ export function Header() {
     <header className="nav">
       <div className="container nav-inner">
         <Link className="brand" href="/">
-          <Dumbbell size={22} /> Beast Force
+          <Dumbbell size={22} /> BEAST FORCE
         </Link>
         <nav className="nav-links">
           {links.map(([label, href]) => (
