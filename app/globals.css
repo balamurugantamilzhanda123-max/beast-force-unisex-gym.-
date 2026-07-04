@@ -161,6 +161,11 @@ textarea.input { min-height: 130px; resize: vertical; }
   padding-left: 0;
 }
 .field-shell textarea.input { padding-top: 13px; }
+.date-field { cursor: pointer; }
+.date-field .input {
+  cursor: pointer;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
 
 .hero {
   min-height: 94vh;

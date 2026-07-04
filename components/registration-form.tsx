@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRef } from "react";
 import { CalendarDays, CreditCard, Mail, MapPin, Phone, UserRound } from "lucide-react";
 
 declare global {
@@ -11,6 +12,14 @@ declare global {
 
 export function RegistrationForm() {
   const [status, setStatus] = useState("");
+  const startDateRef = useRef<HTMLInputElement>(null);
+
+  function openStartDatePicker() {
+    const input = startDateRef.current;
+    if (!input) return;
+    input.showPicker?.();
+    input.focus();
+  }
 
   async function submit(formData: FormData) {
     setStatus("Creating membership...");
@@ -78,7 +87,10 @@ export function RegistrationForm() {
         <option value="00000000-0000-0000-0000-000000000090">Quarterly</option>
         <option value="00000000-0000-0000-0000-000000000365">Yearly</option>
       </select>
-      <label className="field-shell"><CalendarDays size={18} /><input className="input" name="startDate" type="date" required /></label>
+      <label className="field-shell date-field" onClick={openStartDatePicker}>
+        <CalendarDays size={18} />
+        <input ref={startDateRef} className="input" name="startDate" type="date" required />
+      </label>
       <label className="field-shell span-2"><MapPin size={18} /><textarea className="input" name="address" placeholder="Address" required /></label>
       <button className="button span-2" type="submit"><CreditCard size={18} /> Register & Pay</button>
       <p className="muted span-2">{status}</p>
