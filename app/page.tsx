@@ -181,14 +181,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section admin-section">
-        <div className="container admin-panel">
-          <span className="eyebrow">Admin Access</span>
-          <h2 className="section-title">Command The Member Dashboard</h2>
-          <Link className="button button-xl" href="/admin">Admin Access</Link>
-        </div>
-      </section>
-
       <WhatsAppButton />
     </main>
   );

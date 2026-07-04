@@ -401,6 +401,20 @@ textarea.input { min-height: 130px; resize: vertical; }
 .table { width: 100%; border-collapse: collapse; overflow: hidden; }
 .table th, .table td { padding: 14px; border-bottom: 1px solid var(--line); text-align: left; }
 .badge { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: rgba(40, 224, 166, .12); color: var(--mint); font-weight: 800; font-size: .78rem; }
+.badge-active, .badge-paid { background: rgba(40, 224, 166, .12); color: var(--mint); }
+.badge-expired, .badge-failed { background: rgba(255, 45, 32, .14); color: #ff8b80; }
+.badge-pending { background: rgba(255, 209, 102, .14); color: var(--gold); }
+.badge-cancelled, .badge-refunded { background: rgba(255, 255, 255, .1); color: #d6d0c8; }
+.admin-auth-shell,
+.admin-dashboard-shell {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 45, 32, .12), transparent 28rem),
+    radial-gradient(circle at 85% 12%, rgba(255, 122, 24, .1), transparent 24rem);
+}
+.admin-table-section { padding-bottom: 0; }
+.table-card { padding: 0; overflow: hidden; }
+.table-scroll { overflow-x: auto; }
+.table-button { min-height: 38px; padding: 0 14px; font-size: .78rem; }
 .whatsapp {
   position: fixed;
   right: 18px;
