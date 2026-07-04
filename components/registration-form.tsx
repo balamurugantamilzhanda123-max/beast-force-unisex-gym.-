@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CreditCard } from "lucide-react";
+import { CalendarDays, CreditCard, Mail, MapPin, Phone, UserRound } from "lucide-react";
 
 declare global {
   interface Window {
@@ -59,10 +59,10 @@ export function RegistrationForm() {
   }
 
   return (
-    <form action={submit} className="card form-grid">
-      <input className="input" name="fullName" placeholder="Full name" required />
-      <input className="input" name="phone" placeholder="Phone number with country code" required />
-      <input className="input" name="email" type="email" placeholder="Email ID" required />
+    <form action={submit} className="card form-grid registration-card">
+      <label className="field-shell"><UserRound size={18} /><input className="input" name="fullName" placeholder="Full name" required /></label>
+      <label className="field-shell"><Phone size={18} /><input className="input" name="phone" placeholder="Phone number with country code" required /></label>
+      <label className="field-shell"><Mail size={18} /><input className="input" name="email" type="email" placeholder="Email ID" required /></label>
       <input className="input" name="password" type="password" minLength={8} placeholder="Create password" required />
       <input className="input" name="age" type="number" min="12" max="90" placeholder="Age" required />
       <select className="input" name="gender" required defaultValue="">
@@ -78,10 +78,10 @@ export function RegistrationForm() {
         <option value="00000000-0000-0000-0000-000000000090">Quarterly</option>
         <option value="00000000-0000-0000-0000-000000000365">Yearly</option>
       </select>
-      <input className="input" name="startDate" type="date" required />
-      <textarea className="input span-2" name="address" placeholder="Address" required />
-      <button className="button" type="submit"><CreditCard size={18} /> Register & Pay</button>
-      <p className="muted">{status}</p>
+      <label className="field-shell"><CalendarDays size={18} /><input className="input" name="startDate" type="date" required /></label>
+      <label className="field-shell span-2"><MapPin size={18} /><textarea className="input" name="address" placeholder="Address" required /></label>
+      <button className="button span-2" type="submit"><CreditCard size={18} /> Register & Pay</button>
+      <p className="muted span-2">{status}</p>
     </form>
   );
 }

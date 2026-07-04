@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Bebas_Neue, Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const oswald = Oswald({ subsets: ["latin"], variable: "--font-display" });
+const rajdhani = Rajdhani({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body"
+});
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display"
+});
 
 export const metadata: Metadata = {
   title: "Beast Force Gym",
@@ -15,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${oswald.variable}`}>
+      <body className={`${rajdhani.variable} ${bebasNeue.variable}`}>
         <Header />
         {children}
         <Footer />
