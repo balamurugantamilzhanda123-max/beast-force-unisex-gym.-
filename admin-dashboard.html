@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | BEAST FORCE UNISEX GYM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="dashboard-body">
+  <aside class="admin-sidebar">
+    <a class="brand" href="index.html"><span class="brand-mark">BF</span><span class="brand-copy">ADMIN</span></a>
+    <nav>
+      <a href="#overview"><i class="fa-solid fa-chart-line"></i> Overview</a>
+      <a href="#members"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="#plans"><i class="fa-solid fa-tags"></i> Plans</a>
+      <a href="#messages"><i class="fa-solid fa-envelope"></i> Messages</a>
+      <a href="#content"><i class="fa-solid fa-pen-to-square"></i> Website</a>
+    </nav>
+    <button class="btn ghost" id="logoutBtn">Logout</button>
+  </aside>
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <span class="eyebrow">Dashboard Overview</span>
+        <h1>BEAST FORCE Control Room</h1>
+      </div>
+      <a class="btn ghost" href="index.html">View Site</a>
+    </header>
+
+    <section id="overview" class="admin-section">
+      <div class="metric-grid">
+        <article><span>Total Members</span><strong id="totalMembers">0</strong></article>
+        <article><span>Active Memberships</span><strong id="activeMembers">0</strong></article>
+        <article><span>Expired Memberships</span><strong id="expiredMembers">0</strong></article>
+        <article><span>Revenue Summary</span><strong id="revenueSummary">₹0</strong></article>
+      </div>
+      <div class="admin-card">
+        <h2>Recent Registrations</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Plan</th><th>Phone</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="recentMembers"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="members" class="admin-section two-col">
+      <div class="admin-card">
+        <h2>Membership Management</h2>
+        <div class="toolbar">
+          <input id="memberSearch" placeholder="Search members">
+          <button class="btn primary small" id="seedMemberBtn">Add Demo Member</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Payment</th><th>Actions</th></tr></thead>
+            <tbody id="membersTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <form class="admin-card" id="memberForm">
+        <h2>Add / Edit Member</h2>
+        <input type="hidden" name="id">
+        <label>Full Name<input name="fullName" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label>Phone<input name="phone" required></label>
+        <label>Plan<input name="selectedPlan" required></label>
+        <label>Payment Method<input name="paymentMethod" required></label>
+        <label>Status<select name="status"><option>active</option><option>pending</option><option>expired</option></select></label>
+        <button class="btn primary" type="submit">Save Member</button>
+      </form>
+    </section>
+
+    <section id="plans" class="admin-section two-col">
+      <form class="admin-card" id="planForm">
+        <h2>Manage Pricing</h2>
+        <input type="hidden" name="id">
+        <label>Plan Name<input name="name" required></label>
+        <label>Price<input name="price" required></label>
+        <label>Benefits<textarea name="benefits" rows="4" placeholder="One benefit per line"></textarea></label>
+        <button class="btn primary" type="submit">Save Plan</button>
+      </form>
+      <div class="admin-card">
+        <h2>Current Plans</h2>
+        <div id="adminPlans" class="mini-list"></div>
+      </div>
+    </section>
+
+    <section id="messages" class="admin-section two-col">
+      <div class="admin-card">
+        <h2>Contact Messages</h2>
+        <div id="messagesList" class="mini-list"></div>
+      </div>
+      <form class="admin-card" id="promoForm">
+        <h2>Send Promotional Email</h2>
+        <label>Subject<input name="subject" required></label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button class="btn primary" type="submit">Queue Promotion</button>
+        <p class="form-status" id="promoStatus"></p>
+      </form>
+    </section>
+
+    <section id="content" class="admin-section admin-grid">
+      <form class="admin-card" id="trainerForm">
+        <h2>Manage Trainers</h2>
+        <label>Name<input name="name" required></label>
+        <label>Role<select name="role"><option>Boys Trainer</option><option>Girls Trainer</option></select></label>
+        <label>Experience<input name="experience" required></label>
+        <label>Specialization<input name="specialization" required></label>
+        <label>Photo URL<input name="photo" required></label>
+        <button class="btn primary" type="submit">Add Trainer</button>
+      </form>
+      <form class="admin-card" id="amenityForm">
+        <h2>Manage Amenities</h2>
+        <label>Name<input name="name" required></label>
+        <label>Icon Class<input name="icon" placeholder="fa-solid fa-dumbbell" required></label>
+        <label>Description<textarea name="description" rows="3" required></textarea></label>
+        <button class="btn primary" type="submit">Add Amenity</button>
+      </form>
+      <form class="admin-card" id="galleryForm">
+        <h2>Upload Gallery Image</h2>
+        <label>Image URL<input name="url" required></label>
+        <label>Caption<input name="caption" required></label>
+        <button class="btn primary" type="submit">Add Image</button>
+      </form>
+      <form class="admin-card" id="settingsForm">
+        <h2>Website Settings</h2>
+        <label>Phone<input name="phone" value="+91 98765 43210"></label>
+        <label>Email<input name="email" value="beastforcegym@example.com"></label>
+        <label>Address<textarea name="address" rows="3">2nd Floor, Main Road, Your City, India 000000</textarea></label>
+        <label>Gym Timings<textarea name="timings" rows="3">Mon - Sat: 5:00 AM - 10:00 PM&#10;Sunday: 6:00 AM - 12:00 PM</textarea></label>
+        <button class="btn primary" type="submit">Update Settings</button>
+      </form>
+    </section>
+
+    <section class="admin-section">
+      <div class="admin-card">
+        <h2>Reports and Analytics</h2>
+        <p id="analyticsSummary">Revenue, plan demand, active members, and monthly registrations are calculated from available membership records.</p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>
